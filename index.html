@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Coming Soon</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
-      color: #f4f4f9;
-      text-align: center;
-    }
-    .container {
-      max-width: 600px;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #ccc;
-    }
-    .loader {
-      border: 6px solid #2a2a40;
-      border-top: 6px solid #00c6ff;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      margin: 0 auto;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Under Construction | Anish Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  body {
+    height:100vh; display:flex; justify-content:center; align-items:center;
+    background: linear-gradient(135deg,#1f1c2c,#928dab); color:#fff; overflow:hidden;
+  }
+  .container { text-align:center; position:relative; z-index:2; }
+  h1 { font-size:3rem; margin-bottom:1rem; animation: slideIn 1s ease-out; }
+  p { font-size:1.2rem; margin-bottom:2rem; animation: fadeIn 2s ease-in; }
+  a { text-decoration:none; color:#ffdd57; font-weight:700; transition:0.3s; }
+  a:hover { color:#fff; }
+  .under-construction { font-size:6rem; margin-bottom:1rem; animation: pulse 1.5s infinite; display:inline-block; }
+
+  /* Animated background bubbles */
+  .bubble {
+    position:absolute; border-radius:50%; background:rgba(255,255,255,0.15);
+    animation: float 10s infinite;
+    pointer-events:none;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes slideIn { 0% {opacity:0; transform:translateY(-50px);} 100% {opacity:1; transform:translateY(0);} }
+  @keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
+  @keyframes float {
+    0% { transform: translateY(100vh) translateX(0) scale(1); opacity:0.2; }
+    50% { opacity:0.5; }
+    100% { transform: translateY(-100vh) translateX(50px) scale(1.5); opacity:0; }
+  }
+</style>
 </head>
 <body>
   <div class="container">
-    <h1>🚧 Portfolio Under Construction 🚧</h1>
-    <p>I’m building something awesome. Stay tuned!</p>
-    <div class="loader"></div>
-    <footer>© 2025 Anish Kumar</footer>
+    <div class="under-construction">🚧</div>
+    <h1>Portfolio Under Construction</h1>
+    <p>Hello! I am Anish Kumar. This portfolio is currently under development.</p>
+    <p>Check back soon or follow me on <a href="https://github.com/anishk-neuroforge" target="_blank">GitHub</a> for updates.</p>
   </div>
+
+  <script>
+    // Create animated bubbles
+    const body = document.body;
+    for(let i=0;i<20;i++){
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random()*50+20;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random()*100}%`;
+      bubble.style.animationDuration = `${Math.random()*5+5}s`;
+      bubble.style.animationDelay = `${Math.random()*5}s`;
+      body.appendChild(bubble);
+    }
+  </script>
 </body>
 </html>
