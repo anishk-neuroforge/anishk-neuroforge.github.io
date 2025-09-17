@@ -1,67 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Under Construction | Anish Kumar</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
-  body {
-    height:100vh; display:flex; justify-content:center; align-items:center;
-    background: linear-gradient(135deg,#1f1c2c,#928dab); color:#fff; overflow:hidden;
-  }
-  .container { text-align:center; position:relative; z-index:2; }
-  h1 { font-size:3rem; margin-bottom:1rem; animation: slideIn 1s ease-out; }
-  p { font-size:1.2rem; margin-bottom:2rem; animation: fadeIn 2s ease-in; }
-  a { text-decoration:none; color:#ffdd57; font-weight:700; transition:0.3s; }
-  a:hover { color:#fff; }
-  .under-construction { font-size:6rem; margin-bottom:1rem; animation: pulse 1.5s infinite; display:inline-block; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Under Construction | Anish Kumar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base styles */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
 
-  /* Animated background bubbles */
-  .bubble {
-    position:absolute; border-radius:50%; background:rgba(255,255,255,0.15);
-    animation: float 10s infinite;
-    pointer-events:none;
-  }
+    /* Container */
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 700px;
+      background: rgba(31, 28, 44, 0.85);
+      border-radius: 20px;
+      padding: 3rem 2rem 4rem;
+      box-shadow: 0 0 40px rgba(0, 216, 255, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 1.2s ease forwards;
+    }
 
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-  }
+    /* Heading and text */
+    .under-construction {
+      font-size: 8rem;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite ease-in-out;
+      user-select: none;
+      filter: drop-shadow(0 0 10px #00d8ff);
+    }
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #00d8ff;
+      text-shadow: 0 0 15px #00d8ff;
+      animation: slideInDown 1s ease forwards;
+    }
+    p.description {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #a0c4ff;
+      line-height: 1.5;
+      animation: fadeIn 2s ease forwards;
+    }
 
-  @keyframes slideIn { 0% {opacity:0; transform:translateY(-50px);} 100% {opacity:1; transform:translateY(0);} }
-  @keyframes fadeIn { 0% {opacity:0;} 100% {opacity:1;} }
-  @keyframes float {
-    0% { transform: translateY(100vh) translateX(0) scale(1); opacity:0.2; }
-    50% { opacity:0.5; }
-    100% { transform: translateY(-100vh) translateX(50px) scale(1.5); opacity:0; }
-  }
-</style>
+    /* Highlighted link */
+    a.highlight {
+      color: #ffdd57;
+      font-weight: 700;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    a.highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #ffdd57;
+      bottom: -4px;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    a.highlight:hover {
+      color: #fff;
+    }
+    a.highlight:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Countdown timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      user-select: none;
+      animation: fadeIn 2.5s ease forwards;
+    }
+    .countdown-item {
+      background: rgba(0, 216, 255, 0.15);
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      min-width: 80px;
+      box-shadow: 0 0 15px #00d8ff88;
+      transition: background 0.3s ease;
+      cursor: default;
+    }
+    .countdown-item:hover {
+      background: rgba(0, 216, 255, 0.3);
+      box-shadow: 0 0 25px #00d8ffcc;
+    }
+    .countdown-item span.number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #00d8ff;
+      text-shadow: 0 0 10px #00d8ff;
+    }
+    .countdown-item span.label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: #a0c4ff;
+      margin-top: 0.3rem;
+      letter-spacing: 1.5px;
+    }
+
+    /* Subscription form */
+    form#subscribe-form {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      animation: fadeIn 3s ease forwards;
+    }
+    input[type="email"] {
+      padding: 0.9rem 1.2rem;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      width: 280px;
+      max-width: 100%;
+      transition: box-shadow 0.3s ease;
+      background: rgba(255 255 255 / 0.1);
+      color: #fff;
+      box-shadow: inset 0 0 8px rgba(0, 216, 255, 0.5);
+    }
+    input[type="email"]::placeholder {
+      color: #a0c4ff;
+    }
+    input[type="email"]:focus {
+      box-shadow: 0 0 15px #00d8ff;
+      background: rgba(255 255 255 / 0.15);
+    }
+    button[type="submit"] {
+      background: #00d8ff;
+      border: none;
+      padding: 0 2rem;
+      border-radius: 30px;
+      color: #0f2027;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 0 15px #00d8ff;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button[type="submit"]:hover {
+      background: #00ffa3;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00ffa3;
+    }
+    button[type="submit"]:active {
+      transform: scale(0.95);
+    }
+
+    /* Feedback message */
+    #form-message {
+      font-size: 1rem;
+      min-height: 1.2rem;
+      color: #00ffa3;
+      margin-top: 0.5rem;
+      user-select: none;
+      animation: fadeIn 1s ease forwards;
+    }
+    #form-message.error {
+      color: #ff4d4d;
+    }
+
+    /* Social icons container */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      animation: fadeIn 3.5s ease forwards;
+    }
+
+    /* Social icon styles */
+    .social-links a {
+      color: #00d8ff;
+      font-size: 2.5rem;
+      position: relative;
+      transition: color 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-links a:hover {
+      color: #00ffa3;
+      transform: scale(1.3);
+    }
+    .social-links a:focus-visible {
+      outline: 2px solid #00ffa3;
+      outline-offset: 4px;
+    }
+
+    /* Tooltip */
+    .social-links a .tooltip {
+      position: absolute;
+      bottom: 130%;
+      background: #00d8ff;
+      color: #0f2027;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      z-index: 20;
+    }
+    .social-links a:hover .tooltip,
+    .social-links a:focus .tooltip {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #7f8c8d;
+      user-select: none;
+      z-index: 10;
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px #00d8ff);
+      }
+      50% {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 20px #00ffa3);
+      }
+    }
+    @keyframes slideInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .under-construction {
+        font-size: 5rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      p.description {
+        font-size: 1.1rem;
+      }
+      .countdown {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .countdown-item {
+        min-width: 60px;
+        padding: 0.8rem 1rem;
+      }
+      input[type="email"] {
+        width: 100%;
+      }
+      form#subscribe-form {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      button[type="submit"] {
+        width: 100%;
+      }
+    }
+
+    /* Background canvas */
+    #background-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="under-construction">🚧</div>
-    <h1>Portfolio Under Construction</h1>
-    <p>Hello! I am Anish Kumar. This portfolio is currently under development.</p>
-    <p>Check back soon or follow me on <a href="https://github.com/anishk-neuroforge" target="_blank">GitHub</a> for updates.</p>
-  </div>
+  <canvas id="background-canvas" aria-hidden="true"></canvas>
 
-  <script>
-    // Create animated bubbles
-    const body = document.body;
-    for(let i=0;i<20;i++){
-      const bubble = document.createElement('div');
-      bubble.classList.add('bubble');
-      const size = Math.random()*50+20;
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${Math.random()*100}%`;
-      bubble.style.animationDuration = `${Math.random()*5+5}s`;
-      bubble.style.animationDelay = `${Math.random()*5}s`;
-      body.appendChild(bubble);
-    }
-  </script>
-</body>
-</html>
+  <main class="container" role="main" aria-label="Under Construction Portfolio">
+    <div class="under-construction" aria-hidden="true" title="Under Construction">🚧</div>
+    <h1>Portfolio Under Construction</h1>
+    <p class="description">
+      Hello! I am <strong>Anish Kumar</strong>. This portfolio is currently under development.<br />
+      Check back soon or follow me on <a href="https://github.com/anishk-neuroforge" target="_blank" rel="noopener" class="highlight">GitHub</a> for updates.
+    </p>
+
+    <section aria-label="Countdown to launch" class="countdown" role="timer" aria-live="polite" aria-atomic="true">
+      <div class="countdown-item" tabindex="0">
+        <span class="number" id="days">30</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="countdown-item" tabindex="0">
+        <span class="number" id="hours">29</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="countdown-item" tabindex="0">
+        <span class="number" id="minutes">50</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="countdown-item" tabindex="0">
+        <span class="number" id="seconds">23</span>
+        <span class="label">Seconds</span>
+      </div>
+    </section>
+
+    <form id="subscribe-form" aria-label="Subscribe to newsletter">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        aria-required="true"
+        aria-describedby="form-message"
+        required
+      />
+      <button type="submit" aria-label="Subscribe to newsletter">Notify Me</button>
+      <p id="form-message" role="alert" aria-live="assertive"></p>
+    </form>
+
+    <nav class="social-links" aria-label="Social media links">
+      <a href="https://github.com/anishk-neuroforge" target="_blank" rel="noopener" aria-label="GitHub" tabindex="0">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.997.108-.775.418-1.305.76-1.605-2.665-.3-5.466-1.335-5.466-5.93 0-1.31.47-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.045.138 3.003.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.625-5.48 5.92.43.37.823 1.1.823 2.22v3.293c0 .32.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        <span class="tooltip">GitHub</span>
+      </a>
+      <a href="https://twitter.com/anishk_neuro" target="_blank" rel="noopener" aria-label="Twitter" tabindex="0">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.724-.949.564-2.005.974-3.127 1.195-.897-.959-2.178-1.559-3.594-1.559-2.723 0-4.928 2.206-4.928 4.928 0 .39.045.765.127 1.124-4.094-.205-7.725-2.165-10.158-5.144-.424.729-.666 1.577-.666 2.476 0 1.708.87 3.216 2.188 4.099-.807-.026-1.566-.247-2.228-.616v.062c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.956 2.444 3.379 4.6 3.419-1.68 1.318-3.808 2.105-6.115 2.105-.397 0-.79-.023-1.175-.068 2.179 1.397 4.768 2.213 7.557 2.213 9.054 0 14-7.496 14-13.986 0-.21 0-.423-.015-.633.962-.695 1.8-1.562 2.46-2.549z"/>
+        </svg>
+        <span class="tooltip">Twitter</span>
+      </a>
+      <a href="https://www.linkedin.com/in/anishk-neuroforge/" target="_blank" rel="
