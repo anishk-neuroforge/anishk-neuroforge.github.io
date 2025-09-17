@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anish Kumar Portfolio | Under Construction</title>
+<title>Anish Kumar | Portfolio Teaser</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ========== Global Styles ========== */
@@ -13,14 +13,16 @@ a { color:#ffdd57; text-decoration:none; transition:0.3s; }
 a:hover { color:#fff; }
 
 /* ========== Hero Section ========== */
-.hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; position:relative; z-index:2; padding:20px; }
-.hero h1 { font-size:3rem; margin-bottom:1rem; animation: fadeInDown 1s ease-out; }
-.hero p { font-size:1.2rem; margin-bottom:2rem; animation: fadeInUp 1.5s ease-out; }
-.hero button { padding:12px 30px; border:none; background:#ffdd57; color:#0f0c29; font-weight:700; border-radius:8px; cursor:pointer; font-size:1rem; transition:0.3s; }
+.hero { display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; position:relative; z-index:2; padding:20px; overflow:hidden; }
+.hero h1 { font-size:3rem; margin-bottom:1rem; opacity:0; animation: fadeInDown 1s forwards; }
+.hero p { font-size:1.2rem; margin-bottom:2rem; opacity:0; animation: fadeInUp 1s 0.5s forwards; }
+.hero button { padding:12px 30px; border:none; background:#ffdd57; color:#0f0c29; font-weight:700; border-radius:8px; cursor:pointer; font-size:1rem; transition:0.3s; opacity:0; animation: fadeInUp 1s 1s forwards; }
 .hero button:hover { background:#fff; transform:scale(1.05); }
-
-/* ========== Animated Emoji ========== */
 .hero .emoji { font-size:5rem; display:inline-block; margin-bottom:1rem; animation: pulse 1.5s infinite; }
+
+/* ========== Scroll Animation Helper ========== */
+[data-animate] { opacity:0; transform: translateY(30px); transition: all 0.8s ease-out; }
+[data-animate].active { opacity:1; transform: translateY(0); }
 
 /* ========== Projects Teaser Section ========== */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; padding:50px 20px; z-index:2; position:relative; }
@@ -28,6 +30,10 @@ a:hover { color:#fff; }
 .project-card:hover { transform: translateY(-10px) scale(1.05); background:rgba(255,255,255,0.1); }
 .project-card h3 { margin-bottom:10px; font-size:1.2rem; color:#ffdd57; }
 .project-card p { font-size:0.95rem; line-height:1.4; }
+
+/* ========== Countdown Section ========== */
+.countdown { text-align:center; margin-top:40px; font-size:1.5rem; color:#ffdd57; }
+.countdown span { font-weight:700; margin:0 5px; }
 
 /* ========== Contact / Social Section ========== */
 .contact { text-align:center; padding:50px 20px; z-index:2; position:relative; }
@@ -51,29 +57,34 @@ footer { text-align:center; padding:20px; font-size:0.9rem; color:rgba(255,255,2
 <!-- ========== Hero Section ========== -->
 <section class="hero">
   <div class="emoji">🚀</div>
-  <h1>Portfolio Under Construction</h1>
-  <p>Hello! I’m Anish Kumar. Exciting things are coming soon!</p>
-  <button onclick="alert('Stay tuned! Follow me on GitHub!')">Notify Me</button>
+  <h1 data-animate>Portfolio Under Construction</h1>
+  <p data-animate>Hello! I’m Anish Kumar. Exciting features coming soon!</p>
+  <button onclick="alert('Stay tuned! Follow me on GitHub!')" data-animate>Notify Me</button>
 </section>
 
 <!-- ========== Projects Teaser Section ========== -->
-<section class="projects">
+<section class="projects" data-animate>
   <div class="project-card">
     <h3>Project 1</h3>
     <p>Interactive web app coming soon. Hover to see animations!</p>
   </div>
   <div class="project-card">
     <h3>Project 2</h3>
-    <p>AI / ML project teaser. Stay tuned for live demos!</p>
+    <p>AI / ML demo in progress. Stay tuned!</p>
   </div>
   <div class="project-card">
     <h3>Project 3</h3>
-    <p>Dynamic React/Next.js portfolio feature in progress!</p>
+    <p>Next-gen portfolio features coming soon.</p>
   </div>
 </section>
 
+<!-- ========== Countdown Section ========== -->
+<section class="countdown" data-animate>
+  Launching in: <span id="days">00</span> Days <span id="hours">00</span> Hours <span id="minutes">00</span> Minutes <span id="seconds">00</span> Seconds
+</section>
+
 <!-- ========== Contact / Social Section ========== -->
-<section class="contact">
+<section class="contact" data-animate>
   <p>Follow me for updates:</p>
   <a href="https://github.com/anishk-neuroforge" target="_blank">GitHub</a>
   <a href="https://linkedin.com" target="_blank">LinkedIn</a>
@@ -83,31 +94,60 @@ footer { text-align:center; padding:20px; font-size:0.9rem; color:rgba(255,255,2
 <!-- ========== Footer ========== -->
 <footer>© 2025 Anish Kumar. All rights reserved.</footer>
 
-<!-- ========== Background Particles Script ========== -->
+<!-- ========== Scripts ========== -->
 <script>
-  const numParticles = 50;
-  for(let i=0;i<numParticles;i++){
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    const size = Math.random()*10+5;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${Math.random()*100}%`;
-    particle.style.animationDuration = `${Math.random()*10+5}s`;
-    particle.style.animationDelay = `${Math.random()*5}s`;
-    document.body.appendChild(particle);
-  }
+// ========== Background Particles ==========
+const numParticles = 60;
+for(let i=0;i<numParticles;i++){
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  const size = Math.random()*12+5;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.left = `${Math.random()*100}%`;
+  particle.style.animationDuration = `${Math.random()*15+5}s`;
+  particle.style.animationDelay = `${Math.random()*5}s`;
+  document.body.appendChild(particle);
+}
 
-  // Mouse interactive background effect
-  document.addEventListener('mousemove', e => {
-    document.querySelectorAll('.particle').forEach(p => {
-      const rect = p.getBoundingClientRect();
-      const dx = e.clientX - (rect.left + rect.width/2);
-      const dy = e.clientY - (rect.top + rect.height/2);
-      p.style.transform = `translate(${dx*0.01}px, ${dy*0.01}px)`;
-    });
+// ========== Interactive mouse effect ==========
+document.addEventListener('mousemove', e => {
+  document.querySelectorAll('.particle').forEach(p => {
+    const rect = p.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width/2);
+    const dy = e.clientY - (rect.top + rect.height/2);
+    p.style.transform = `translate(${dx*0.01}px, ${dy*0.01}px)`;
   });
+});
+
+// ========== Scroll Animation ==========
+const animateElements = document.querySelectorAll('[data-animate]');
+function checkScroll() {
+  const trigger = window.innerHeight * 0.8;
+  animateElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < trigger) el.classList.add('active');
+  });
+}
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+
+// ========== Countdown Timer ==========
+const launchDate = new Date("2025-10-01T00:00:00").getTime();
+function updateCountdown(){
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+  const days = Math.floor(distance/(1000*60*60*24));
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance%(1000*60))/1000);
+  document.getElementById('days').innerText = days.toString().padStart(2,'0');
+  document.getElementById('hours').innerText = hours.toString().padStart(2,'0');
+  document.getElementById('minutes').innerText = minutes.toString().padStart(2,'0');
+  document.getElementById('seconds').innerText = seconds.toString().padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 </body>
 </html>
-
