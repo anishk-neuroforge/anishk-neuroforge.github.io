@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Anish Kumar — ML Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <style>
 [data-theme="dark"] {
   --bg:#080c10;--surface:#0d1117;--surface2:#111820;--border:#1e2d3d;--border2:#162032;
@@ -130,24 +129,10 @@ section{padding:90px 0 0}
 .edu-year{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)}
 .github-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
 .gh-loading{opacity:.4;animation:blink 1.4s infinite}
-.gh-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:1.2rem;
-  text-align:center;
-  transition:all .25s ease;
-}
-
-.gh-card:hover{
-  transform:translateY(-4px);
-  border-color:var(--accent);
-  box-shadow:0 10px 30px var(--shadow);
-}
+.gh-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;text-align:center;transition:all .25s ease;}
+.gh-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 10px 30px var(--shadow);}
 .gh-val{font-family:'Space Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--accent)}
 .gh-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
-.contrib-bar{display:flex;gap:2px;flex-wrap:wrap;margin-top:1rem}
-.contrib-cell{width:12px;height:12px;border-radius:2px}
 .contact-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:3rem;text-align:center;margin-bottom:80px;position:relative;overflow:hidden}
 .contact-box::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(ellipse,rgba(0,212,170,.1) 0%,transparent 70%);pointer-events:none}
 .contact-box h2{font-family:'Space Mono',monospace;font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
@@ -172,43 +157,29 @@ section{padding:90px 0 0}
   .exp-item{grid-template-columns:1fr}.exp-item::before{display:none}.exp-date{text-align:left}.exp-content{padding-left:0}
   .flip-card{height:320px}
 }
-
 /* RECRUITER SUMMARY */
 .recruiter-summary{margin:1.6rem 0 2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;}
 .summary-title{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:1rem;}
 .summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;}
 .summary-item{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;padding:.75rem;font-size:13px;color:var(--ink);}
 @media(max-width:640px){.summary-grid{grid-template-columns:1fr;}}
-
-/* ARCHITECTURE BOX */
-.arch-box{margin-top:.8rem;padding:.7rem;border-radius:6px;background:rgba(0,212,170,.05);border:1px solid var(--border);font-family:'Space Mono',monospace;font-size:10px;line-height:1.8;color:var(--accent);}
-
-/* ENGINEERING NOTES */
-.eng-notes{margin-top:.8rem;font-size:11px;line-height:1.6;color:var(--muted);}
-
 /* SYSTEMS SECTION */
 .systems-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 .system-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.3rem;}
 .system-card h3{font-family:'Space Mono',monospace;font-size:.82rem;margin-bottom:.7rem;color:var(--accent);}
 .system-card p{font-size:13px;color:var(--muted);line-height:1.8;}
 @media(max-width:640px){.systems-grid{grid-template-columns:1fr;}}
-
 /* NOW SECTION */
 .now-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem;display:flex;flex-direction:column;gap:.8rem;font-family:'Space Mono',monospace;font-size:12px;color:var(--accent);}
-
 /* BUILD LOG */
 .build-log{margin-top:1rem;border-left:2px solid var(--accent);padding-left:1rem;display:flex;flex-direction:column;gap:.6rem;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);}
-
 /* RECRUITER MODE */
 .recruiter-mode #neural-canvas,.recruiter-mode #training-ticker,.recruiter-mode .fab-pulse{display:none!important;}
 .recruiter-mode *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
-
 /* REDUCED MOTION */
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}#neural-canvas,#training-ticker{display:none;}}
-
 /* MOBILE FLIP */
 .mobile-flip{transform:rotateY(180deg)!important;}
-
 </style>
 </head>
 <body>
@@ -228,13 +199,11 @@ section{padding:90px 0 0}
   </div>
 </nav>
 <main>
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-badge"><span class="otw-dot"></span> OPEN_TO_WORK = True</div>
     <h1 class="hero-name">Anish<br/><span class="accent">Kumar_</span></h1>
-    <p class="hero-role">
-  ML Engineer in Training &nbsp;/&nbsp;
-  <span>BTech AIML Student</span>
-</p>
+    <p class="hero-role">ML Engineer in Training &nbsp;/&nbsp; <span>BTech AIML Student</span></p>
     <div class="terminal">
       <div class="terminal-bar">
         <div class="t-dot t-red"></div><div class="t-dot t-yellow"></div><div class="t-dot t-green"></div>
@@ -248,6 +217,8 @@ section{padding:90px 0 0}
     </div>
   </section>
   <div class="divider"></div>
+
+  <!-- ABOUT -->
   <section id="about">
     <p class="section-label">About</p>
     <h2 class="section-title">Model Overview</h2>
@@ -257,37 +228,31 @@ section{padding:90px 0 0}
       <div class="metric-card"><div class="metric-label">Frameworks</div><div class="metric-value">5<span class="metric-unit">+</span></div></div>
       <div class="metric-card"><div class="metric-label">Inference</div><div class="metric-value">80<span class="metric-unit">ms</span></div></div>
     </div>
+    <!-- FIX: Updated recruiter summary with MLOps tools -->
     <div class="recruiter-summary">
-  <div class="summary-title">recruiter_summary.json</div>
-  <div class="summary-grid">
-    <div class="summary-item">✓ Computer Vision</div>
-    <div class="summary-item">✓ NLP Systems</div>
-    <div class="summary-item">✓ RAG Pipelines</div>
-    <div class="summary-item">✓ FastAPI Deployment</div>
-    <div class="summary-item">✓ ML APIs</div>
-    <div class="summary-item">✓ PyTorch + TensorFlow</div>
-  </div>
-</div>
-I'm a BTech AIML student focused on building
-<strong>real-world machine learning systems</strong>
-with emphasis on deployment, inference optimization,
-and production-style workflows.
-
-<br/><br/>
-
-My work spans <strong>computer vision, NLP, RAG systems,
-and predictive modeling</strong>. I enjoy turning ML concepts
-into practical applications using modern tooling across
-training, deployment, APIs, and frontend integration.
-
-<br/><br/>
-
-Currently exploring:
-<strong>
-LLM serving, vector databases,
-CUDA optimization, and scalable inference systems.
-</strong>
-</p>
+      <div class="summary-title">recruiter_summary.json</div>
+      <div class="summary-grid">
+        <div class="summary-item">✓ Computer Vision</div>
+        <div class="summary-item">✓ NLP Systems</div>
+        <div class="summary-item">✓ RAG Pipelines</div>
+        <div class="summary-item">✓ FastAPI Deployment</div>
+        <div class="summary-item">✓ MLflow Tracking</div>
+        <div class="summary-item">✓ Docker + Containerization</div>
+        <div class="summary-item">✓ PyTorch + TensorFlow</div>
+        <div class="summary-item">✓ Git + GitHub Workflows</div>
+      </div>
+    </div>
+    <!-- FIX: Wrapped about text in proper <p> tag -->
+    <p class="about-text">
+      I'm a BTech AIML student focused on building <strong>real-world machine learning systems</strong>
+      with emphasis on deployment, inference optimization, and production-style workflows.
+      <br/><br/>
+      My work spans <strong>computer vision, NLP, RAG systems, and predictive modeling</strong>.
+      I enjoy turning ML concepts into practical applications using modern tooling across
+      training, deployment, APIs, and frontend integration.
+      <br/><br/>
+      Currently exploring: <strong>LLM serving, vector databases, CUDA optimization, and scalable inference systems.</strong>
+    </p>
     <div class="curve-section">
       <div class="curve-header">
         <span class="curve-title">TRAINING_CURVE — anish_growth.log</span>
@@ -300,12 +265,16 @@ CUDA optimization, and scalable inference systems.
     </div>
   </section>
   <div class="divider"></div>
+
+  <!-- SKILLS -->
   <section id="skills">
     <p class="section-label">Skills</p>
     <h2 class="section-title">Proficiency Radar</h2>
     <div id="radar-container"><svg id="radar-svg"></svg></div>
   </section>
   <div class="divider"></div>
+
+  <!-- GITHUB -->
   <section id="github">
     <p class="section-label">Activity</p>
     <h2 class="section-title">GitHub Stats</h2>
@@ -314,42 +283,10 @@ CUDA optimization, and scalable inference systems.
       <div class="gh-card"><div class="gh-val" id="gh-stars"><span class="gh-loading">…</span></div><div class="gh-label">Total Stars</div></div>
       <div class="gh-card"><div class="gh-val" id="gh-followers"><span class="gh-loading">…</span></div><div class="gh-label">Followers</div></div>
     </div>
-    <!-- <div class="curve-section" style="margin-bottom:1.5rem;">
-      <div class="curve-header">
-        <span class="curve-title">
-          GITHUB_ANALYTICS — live_stats.json
-        </span>
-      </div>
-
-      <img
-        src="https://github-readme-stats.vercel.app/api?username=anishk-neuroforge&show_icons=true&theme=transparent&hide_border=true&title_color=00d4aa&text_color=e6edf3&icon_color=00d4aa"
-        alt="GitHub Stats"
-        style="
-          width:100%;
-          border-radius:8px;
-          margin-top:.5rem;
-        "
-      />
-    </div> -->
-    <!-- <div class="curve-section" style="margin-bottom:1.5rem;">
-    <div class="curve-header">
-      <span class="curve-title">
-        COMMIT_STREAK — contribution_streak.log
-      </span>
-    </div>
-
-    <img
-      src="https://streak-stats.demolab.com?user=anishk-neuroforge&theme=transparent&hide_border=true&ring=00d4aa&fire=00d4aa&currStreakLabel=00d4aa"
-      alt="GitHub Streak"
-      style="
-        width:100%;
-        border-radius:8px;
-        margin-top:.5rem;
-      "
-    />
-  </div> -->
   </section>
   <div class="divider"></div>
+
+  <!-- PROJECTS -->
   <section id="projects">
     <p class="section-label">Projects</p>
     <h2 class="section-title">Model Registry</h2>
@@ -361,63 +298,130 @@ CUDA optimization, and scalable inference systems.
     </div>
     <p class="hover-hint">// hover cards to flip and see full details →</p>
     <div class="projects-grid" id="projects-grid">
+
       <div class="flip-card" data-cat="cv"><div class="flip-inner">
         <div class="flip-front"><div class="card-header"><span class="card-type type-cv">computer_vision</span></div><div class="card-body"><div class="card-name">real_time_object_detection.py</div><div class="card-desc-short">YOLO-based detection pipeline with live video. Custom-trained on domain dataset, edge-optimized.</div><div class="model-stats"><div class="model-stat"><div class="ms-label">mAP</div><div class="ms-val">94.2%</div></div><div class="model-stat"><div class="ms-label">FPS</div><div class="ms-val">45</div></div><div class="model-stat"><div class="ms-label">Dataset</div><div class="ms-val">12K</div></div></div></div></div>
         <div class="flip-back"><div class="back-title">real_time_object_detection.py</div><p class="back-desc">YOLOv8 fine-tuned on a custom dataset, served via FastAPI at 45FPS on edge hardware.</p><div class="back-flow">camera → preprocess → YOLOv8 → FastAPI → frontend</div><div class="back-tech"><span>PyTorch</span><span>YOLOv8</span><span>OpenCV</span><span>FastAPI</span><span>Docker</span></div><div class="back-links"><a href="#" class="back-icon-link" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a><a href="#" class="back-icon-link" title="Demo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></div>
       </div></div>
+
       <div class="flip-card" data-cat="nlp"><div class="flip-inner">
         <div class="flip-front"><div class="card-header"><span class="card-type type-nlp">nlp</span></div><div class="card-body"><div class="card-name">sentiment_classifier_bert.py</div><div class="card-desc-short">Fine-tuned BERT for multi-class sentiment. REST API handling high-throughput production traffic.</div><div class="model-stats"><div class="model-stat"><div class="ms-label">Accuracy</div><div class="ms-val">91%</div></div><div class="model-stat"><div class="ms-label">RPS</div><div class="ms-val">500+</div></div><div class="model-stat"><div class="ms-label">Classes</div><div class="ms-val">5</div></div></div></div></div>
         <div class="flip-back"><div class="back-title">sentiment_classifier_bert.py</div><p class="back-desc">Fine-tuned BERT on 80K reviews, deployed with FastAPI + Docker handling 500+ requests/sec.</p><div class="back-flow">raw text → tokenizer → BERT → softmax → REST API</div><div class="back-tech"><span>Transformers</span><span>BERT</span><span>FastAPI</span><span>Docker</span></div><div class="back-links"><a href="#" class="back-icon-link" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a><a href="#" class="back-icon-link" title="Demo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></div>
       </div></div>
+
       <div class="flip-card" data-cat="ml"><div class="flip-inner">
         <div class="flip-front"><div class="card-header"><span class="card-type type-ml">ml_classic</span></div><div class="card-body"><div class="card-name">churn_prediction_pipeline.py</div><div class="card-desc-short">End-to-end churn prediction with feature engineering and stakeholder dashboard.</div><div class="model-stats"><div class="model-stat"><div class="ms-label">Precision</div><div class="ms-val">87%</div></div><div class="model-stat"><div class="ms-label">Recall</div><div class="ms-val">83%</div></div><div class="model-stat"><div class="ms-label">Rows</div><div class="ms-val">500K</div></div></div></div></div>
         <div class="flip-back"><div class="back-title">churn_prediction_pipeline.py</div><p class="back-desc">End-to-end pipeline with SMOTE balancing and a Streamlit dashboard — reduced churn by 18%.</p><div class="back-flow">raw data → feature eng → SMOTE → XGBoost → dashboard</div><div class="back-tech"><span>XGBoost</span><span>Scikit-learn</span><span>Streamlit</span><span>Pandas</span></div><div class="back-links"><a href="#" class="back-icon-link" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a></div></div>
       </div></div>
+
       <div class="flip-card" data-cat="cv"><div class="flip-inner">
         <div class="flip-front"><div class="card-header"><span class="card-type type-cv">computer_vision</span></div><div class="card-body"><div class="card-name">face_recognition_attendance.py</div><div class="card-desc-short">Automated attendance via FaceNet embeddings with live camera for 200+ users.</div><div class="model-stats"><div class="model-stat"><div class="ms-label">Accuracy</div><div class="ms-val">98.4%</div></div><div class="model-stat"><div class="ms-label">Latency</div><div class="ms-val">80ms</div></div><div class="model-stat"><div class="ms-label">Users</div><div class="ms-val">200+</div></div></div></div></div>
         <div class="flip-back"><div class="back-title">face_recognition_attendance.py</div><p class="back-desc">FaceNet + cosine similarity for live attendance — 98.4% accuracy serving 200+ users at 80ms.</p><div class="back-flow">camera → FaceNet → embeddings → cosine sim → SQLite log</div><div class="back-tech"><span>TensorFlow</span><span>FaceNet</span><span>OpenCV</span><span>SQLite</span></div><div class="back-links"><a href="#" class="back-icon-link" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a></div></div>
       </div></div>
+
       <div class="flip-card" data-cat="nlp"><div class="flip-inner">
         <div class="flip-front"><div class="card-header"><span class="card-type type-nlp">nlp</span></div><div class="card-body"><div class="card-name">document_qa_rag.py</div><div class="card-desc-short">RAG pipeline for multi-document Q&A using transformer embeddings + FAISS vector search.</div><div class="model-stats"><div class="model-stat"><div class="ms-label">BLEU</div><div class="ms-val">0.81</div></div><div class="model-stat"><div class="ms-label">Docs</div><div class="ms-val">1K+</div></div><div class="model-stat"><div class="ms-label">Latency</div><div class="ms-val">1.2s</div></div></div></div></div>
         <div class="flip-back"><div class="back-title">document_qa_rag.py</div><p class="back-desc">PDF ingestion into FAISS vector store, retrieved context fed to LLM for grounded answers. BLEU 0.81.</p><div class="back-flow">PDF → chunker → embeddings → FAISS → LLM → answer</div><div class="back-tech"><span>LangChain</span><span>FAISS</span><span>HuggingFace</span><span>Python</span></div><div class="back-links"><a href="#" class="back-icon-link" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a><a href="#" class="back-icon-link" title="Demo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></div>
       </div></div>
+
       <div class="flip-card" data-cat="ml"><div class="flip-inner">
         <div class="flip-front"><div class="card-header"><span class="card-type type-ml">ml_classic</span></div><div class="card-body"><div class="card-name">fraud_detection_xgb.py</div><div class="card-desc-short">Imbalanced classification for credit card fraud. SMOTE + ensemble on 2M records.</div><div class="model-stats"><div class="model-stat"><div class="ms-label">Recall</div><div class="ms-val">99.2%</div></div><div class="model-stat"><div class="ms-label">F1</div><div class="ms-val">0.94</div></div><div class="model-stat"><div class="ms-label">Records</div><div class="ms-val">2M</div></div></div></div></div>
         <div class="flip-back"><div class="back-title">fraud_detection_xgb.py</div><p class="back-desc">SMOTE + cost-sensitive XGBoost on 2M records with MLflow tracking — 99.2% minority class recall.</p><div class="back-flow">transactions → SMOTE → XGBoost → MLflow → scoring API</div><div class="back-tech"><span>XGBoost</span><span>SMOTE</span><span>MLflow</span><span>Scikit-learn</span></div><div class="back-links"><a href="#" class="back-icon-link" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a></div></div>
       </div></div>
+
     </div>
   </section>
   <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
   <section id="experience">
     <p class="section-label">Experience</p>
     <h2 class="section-title">Training History</h2>
     <div class="exp-list">
-      <div class="exp-item"><div class="exp-date">2023 — present</div><div class="exp-content"><div class="exp-role">BTech — AI & Machine Learning</div><div class="exp-company">[ Lovely Professional University ]</div><p class="exp-desc">Core coursework: Deep Learning, Computer Vision, NLP, Data Structures, Statistics. Building and deploying ML systems as major projects alongside academic work.</p></div></div>
-      <div class="exp-item"><div class="exp-date">2024-2025</div><div class="exp-content"><div class="exp-role">AI Training & Evaluation Freelancer</div><div class="exp-company">[ Outlier AI ]</div><p class="exp-desc">Worked on AI data annotation, model evaluation, and RLHF-style feedback tasks. Contributed to improving LLM response quality across coding and reasoning domains. </p></div></div>
-      <div class="exp-item"><div class="exp-date">2023 — 2026</div><div class="exp-content"><div class="exp-role">Independent ML Projects</div><div class="exp-company">Self-Directed</div><p class="exp-desc">Built 6 end-to-end ML projects spanning CV, NLP, and predictive modeling. Focused on deployment-quality code, inference optimization, and production-style architecture.</p></div></div>
+      <div class="exp-item">
+        <div class="exp-date">2023 — present</div>
+        <div class="exp-content">
+          <div class="exp-role">BTech — AI & Machine Learning</div>
+          <div class="exp-company">[ Lovely Professional University ]</div>
+          <p class="exp-desc">Core coursework: Deep Learning, Computer Vision, NLP, Data Structures, Statistics. Building and deploying ML systems as major projects alongside academic work.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2024 — 2025</div>
+        <div class="exp-content">
+          <div class="exp-role">AI Training & Evaluation Freelancer</div>
+          <div class="exp-company">[ Outlier AI ]</div>
+          <p class="exp-desc">Worked on AI data annotation, model evaluation, and RLHF-style feedback tasks. Contributed to improving LLM response quality across coding and reasoning domains.</p>
+        </div>
+      </div>
+      <!-- FIX: Changed 2023-2026 to 2023-present -->
+      <div class="exp-item">
+        <div class="exp-date">2023 — present</div>
+        <div class="exp-content">
+          <div class="exp-role">Independent ML Projects</div>
+          <div class="exp-company">Self-Directed</div>
+          <p class="exp-desc">Built 6 end-to-end ML projects spanning CV, NLP, and predictive modeling. Focused on deployment-quality code, inference optimization, and production-style architecture.</p>
+        </div>
+      </div>
     </div>
   </section>
   <div class="divider"></div>
+
+  <!-- EDUCATION -->
   <section id="education">
     <p class="section-label">Education</p>
     <h2 class="section-title">Checkpoints</h2>
     <div class="edu-grid">
-      <div class="edu-card"><div class="edu-degree">B.Tech — AI & Machine Learning</div><div class="edu-school">[ Lovely Professional University ]</div><div class="edu-year">Expected: 2027</div></div>
-      <div class="edu-card"><div class="edu-degree">Certifications</div><div class="edu-school">deeplearning.ai / Coursera / Google</div><div class="edu-year">Ongoing</div></div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech — AI & Machine Learning</div>
+        <div class="edu-school">[ Lovely Professional University ]</div>
+        <div class="edu-year">Expected: 2027</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Certifications</div>
+        <div class="edu-school">deeplearning.ai / Coursera / Google</div>
+        <div class="edu-year">Ongoing</div>
+      </div>
     </div>
   </section>
   <div class="divider"></div>
+
+  <!-- SYSTEMS -->
   <section id="systems">
     <p class="section-label">Systems</p>
     <h2 class="section-title">ML Systems I Can Build</h2>
     <div class="systems-grid">
-      <div class="system-card"><h3>Inference APIs</h3><p>FastAPI inference pipelines with model serving and REST endpoints.</p></div>
-      <div class="system-card"><h3>RAG Pipelines</h3><p>Vector search, embeddings, chunking, retrieval, and grounded generation.</p></div>
-      <div class="system-card"><h3>Computer Vision Systems</h3><p>Detection, recognition, tracking, preprocessing, and live inference.</p></div>
-      <div class="system-card"><h3>ML Dashboards</h3><p>Interactive dashboards using Streamlit and deployment-ready APIs.</p></div>
+      <div class="system-card">
+        <h3>Inference APIs</h3>
+        <p>FastAPI inference pipelines with model serving and REST endpoints.</p>
+      </div>
+      <div class="system-card">
+        <h3>RAG Pipelines</h3>
+        <p>Vector search, embeddings, chunking, retrieval, and grounded generation.</p>
+      </div>
+      <div class="system-card">
+        <h3>Computer Vision Systems</h3>
+        <p>Detection, recognition, tracking, preprocessing, and live inference.</p>
+      </div>
+      <div class="system-card">
+        <h3>ML Dashboards</h3>
+        <p>Interactive dashboards using Streamlit and deployment-ready APIs.</p>
+      </div>
+      <!-- NEW: MLOps card -->
+      <div class="system-card">
+        <h3>MLOps & Experiment Tracking</h3>
+        <p>Git-based workflows, experiment tracking with MLflow, containerized deployments via Docker, and reproducible training pipelines with versioned artifacts.</p>
+      </div>
+      <!-- NEW: Benchmarking card -->
+      <div class="system-card">
+        <h3>Benchmarking & Evaluation</h3>
+        <p>Metric-driven model evaluation with documented baselines. Every project benchmarked against naive approaches with measurable improvement — precision, recall, F1, BLEU, mAP.</p>
+      </div>
     </div>
   </section>
   <div class="divider"></div>
+
+  <!-- NOW -->
   <section id="now">
     <p class="section-label">Now</p>
     <h2 class="section-title">currently_learning/</h2>
@@ -428,18 +432,33 @@ CUDA optimization, and scalable inference systems.
       <div>→ Vector databases</div>
       <div>→ Efficient transformer deployment</div>
     </div>
+    <!-- NEW: Currently building card -->
+    <div class="system-card" style="margin-top:1.2rem;border-color:var(--accent);">
+      <h3>⚙ currently_building/</h3>
+      <p>
+        → Local LLM inference server with quantized Mistral + vLLM<br/>
+        → Experimenting with GGUF quantization for edge deployment<br/>
+        → Building a RAG evaluation pipeline with RAGAS metrics
+      </p>
+    </div>
+    <!-- FIX: Updated build log to v2.5 -->
     <div class="build-log">
       <div>v2.1 → Added deployment-focused project architecture</div>
       <div>v2.2 → Improved recruiter mode + reduced motion</div>
       <div>v2.3 → Added ML systems engineering section</div>
+      <div>v2.4 → Added Outlier AI freelance experience</div>
+      <div>v2.5 → Expanded MLOps stack + benchmarking systems + currently_building</div>
     </div>
   </section>
   <div class="divider"></div>
+
+  <!-- CONTACT -->
   <section id="contact" style="padding-bottom:0">
     <div class="contact-box">
       <h2>model.fit(next_role)</h2>
       <p>Open to full-time ML Engineer positions. Responds within 24hrs.</p>
       <div class="contact-links">
+        <!-- FIX: Both resume links now use correct filename -->
         <a href="Anish_Kumar_Resume.pdf" class="contact-link primary" download>↓ Download Resume</a>
         <a href="mailto:anish00kumar11@gmail.com" class="contact-link">Email</a>
         <a href="https://github.com/anishk-neuroforge" class="contact-link">GitHub</a>
@@ -456,8 +475,7 @@ CUDA optimization, and scalable inference systems.
   <span class="ticker-epoch" id="ticker-epoch">epoch 0/∞</span>
 </div>
 
-
-
+<!-- FIX: Removed duplicate D3.js — only loaded once here -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script>
 /* SCROLL PROGRESS */
@@ -539,104 +557,48 @@ function drawRadar(){
   pts.forEach(p=>g.append('circle').attr('cx',p[0]).attr('cy',p[1]).attr('r',4).attr('fill',ac));
 }
 drawRadar();window.addEventListener('resize',drawRadar);
+
 /* TICKER */
 const tMsgs=['reading_arxiv_papers.py','fine_tuning_llm.py','optimizing_hyperparams.py','building_cv_pipeline.py','exploring_diffusion_models.py','writing_clean_code.py','deploying_to_production.py','debugging_loss_nan.py','learning_rust_for_ml.py'];
 let tIdx=0,tPct=0,tEp=0;
 setInterval(()=>{tPct=(tPct+Math.random()*2)%100;if(tPct<2){tIdx=(tIdx+1)%tMsgs.length;tEp++;}document.getElementById('ticker-fill').style.width=tPct.toFixed(1)+'%';document.getElementById('ticker-text').textContent=tMsgs[tIdx];document.getElementById('ticker-epoch').textContent=`epoch ${tEp}/∞`;},400);
 
 /* GITHUB LIVE STATS */
-/* =========================
-   GITHUB LIVE STATS
-========================= */
-
-(async function () {
-
-  const USERNAME = "anishk-neuroforge";
-
-  const reposEl = document.getElementById("gh-repos");
-  const starsEl = document.getElementById("gh-stars");
-  const followersEl = document.getElementById("gh-followers");
-
-  function formatNumber(num) {
-    if (num >= 1000000) return (num / 1000000).toFixed(1) + "M";
-    if (num >= 1000) return (num / 1000).toFixed(1) + "K";
-    return String(num);
-  }
-
-  async function fetchGitHubStats() {
-
-    try {
-
-      const [userResponse, repoResponse] = await Promise.all([
-
-        fetch(`https://api.github.com/users/${USERNAME}`),
-
-        fetch(
-          `https://api.github.com/users/${USERNAME}/repos?per_page=100`
-        )
-
-      ]);
-
-      if (!userResponse.ok || !repoResponse.ok) {
-        throw new Error("GitHub API rate limit or fetch failure");
-      }
-
-      const userData = await userResponse.json();
-      const repoData = await repoResponse.json();
-
-      const totalStars = repoData.reduce(
-        (acc, repo) => acc + repo.stargazers_count,
-        0
-      );
-
-      /* Animate Numbers */
-      animateValue(reposEl, 0, userData.public_repos || 0, 1200);
-      animateValue(starsEl, 0, totalStars || 0, 1200);
-      animateValue(followersEl, 0, userData.followers || 0, 1200);
-
-      console.log("GitHub stats loaded");
-
-    } catch (error) {
-
+(async function(){
+  const USERNAME="anishk-neuroforge";
+  const reposEl=document.getElementById("gh-repos");
+  const starsEl=document.getElementById("gh-stars");
+  const followersEl=document.getElementById("gh-followers");
+  function formatNumber(num){if(num>=1000000)return(num/1000000).toFixed(1)+"M";if(num>=1000)return(num/1000).toFixed(1)+"K";return String(num);}
+  async function fetchGitHubStats(){
+    try{
+      const[userResponse,repoResponse]=await Promise.all([fetch(`https://api.github.com/users/${USERNAME}`),fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100`)]);
+      if(!userResponse.ok||!repoResponse.ok)throw new Error("GitHub API rate limit or fetch failure");
+      const userData=await userResponse.json();
+      const repoData=await repoResponse.json();
+      const totalStars=repoData.reduce((acc,repo)=>acc+repo.stargazers_count,0);
+      animateValue(reposEl,0,userData.public_repos||0,1200);
+      animateValue(starsEl,0,totalStars||0,1200);
+      animateValue(followersEl,0,userData.followers||0,1200);
+    }catch(error){
       console.error(error);
-
-      reposEl.textContent = "—";
-      starsEl.textContent = "—";
-      followersEl.textContent = "—";
+      reposEl.textContent="—";starsEl.textContent="—";followersEl.textContent="—";
     }
   }
-
-  function animateValue(element, start, end, duration) {
-
-    let startTimestamp = null;
-
-    function step(timestamp) {
-
-      if (!startTimestamp) startTimestamp = timestamp;
-
-      const progress = Math.min(
-        (timestamp - startTimestamp) / duration,
-        1
-      );
-
-      const value = Math.floor(
-        progress * (end - start) + start
-      );
-
-      element.textContent = formatNumber(value);
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
+  function animateValue(element,start,end,duration){
+    let startTimestamp=null;
+    function step(timestamp){
+      if(!startTimestamp)startTimestamp=timestamp;
+      const progress=Math.min((timestamp-startTimestamp)/duration,1);
+      element.textContent=formatNumber(Math.floor(progress*(end-start)+start));
+      if(progress<1)window.requestAnimationFrame(step);
     }
-
     window.requestAnimationFrame(step);
   }
-
   fetchGitHubStats();
-
 })();
 
+/* PROJECT FILTER */
 function filterProjects(cat,btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.flip-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';});}
 
 /* RECRUITER MODE */
@@ -651,9 +613,7 @@ function toggleRecruiterMode(){
 /* MOBILE TAP TO FLIP */
 if(window.innerWidth<768){
   document.querySelectorAll('.flip-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      card.querySelector('.flip-inner').classList.toggle('mobile-flip');
-    });
+    card.addEventListener('click',()=>{card.querySelector('.flip-inner').classList.toggle('mobile-flip');});
   });
 }
 </script>
