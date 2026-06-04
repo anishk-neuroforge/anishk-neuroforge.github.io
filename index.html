@@ -381,6 +381,12 @@ section{padding:100px 0 0}
         <div class="gh-val" id="gh-followers"><span class="gh-loading">…</span></div>
         <div class="gh-label">Followers</div>
       </div>
+      <div class="gh-card">
+        <div class="gh-val" id="gh-contributions">
+        <span class="gh-loading">…</span>
+      </div>
+      <div class="gh-label">Contributions</div>
+</div>
     </div>
   </section>
   <div class="divider"></div>
@@ -1043,6 +1049,7 @@ setInterval(()=>{
   const reposEl=document.getElementById("gh-repos");
   const starsEl=document.getElementById("gh-stars");
   const followersEl=document.getElementById("gh-followers");
+  const contributionsEl=document.getElementById("gh-contributions");
   function formatNumber(num){
     if(num>=1000000)return(num/1000000).toFixed(1)+"M";
     if(num>=1000)return(num/1000).toFixed(1)+"K";
@@ -1060,19 +1067,31 @@ setInterval(()=>{
   }
   try{
     const PROXY = "https://dry-breeze-33bc.anish00kumar11.workers.dev";
-    const[userResponse,repoResponse]=await Promise.all([
-      fetch(`${PROXY}/users/${USERNAME}`),
-      fetch(`${PROXY}/users/${USERNAME}/repos?per_page=100`)
-    ]);
+    const [userResponse, repoResponse, contributionResponse] =
+await Promise.all([
+  fetch(`${PROXY}/users/${USERNAME}`),
+  fetch(`${PROXY}/users/${USERNAME}/repos?per_page=100`),
+  fetch(`${PROXY}/contributions/${USERNAME}`)
+]);
     if(!userResponse.ok||!repoResponse.ok)throw new Error("GitHub API limit");
     const userData=await userResponse.json();
     const repoData=await repoResponse.json();
+    const contributionData = await contributionResponse.json();
     const totalStars=repoData.reduce((acc,repo)=>acc+repo.stargazers_count,0);
     animateValue(reposEl,0,userData.public_repos||0,1200);
     animateValue(starsEl,0,totalStars||0,1200);
     animateValue(followersEl,0,userData.followers||0,1200);
+    animateValue(
+    contributionsEl,
+    0,
+    contributionData.totalContributions || 0,
+    1200
+);
   }catch(error){
-    reposEl.textContent="—";starsEl.textContent="—";followersEl.textContent="—";
+    reposEl.textContent="—";
+starsEl.textContent="—";
+followersEl.textContent="—";
+contributionsEl.textContent="—";
   }
 })();
 
