@@ -67,10 +67,536 @@ border-radius:40px;
 background:#111;
 border:1px solid #4ade80;
 }
+.profile-wrapper{
+
+position:relative;
+
+z-index:10;
+
+animation:floatProfile 5s ease-in-out infinite;
+}
+.profile-image{
+width:260px;
+height:260px;
+
+border-radius:50%;
+object-fit:cover;
+
+border:2px solid var(--accent);
+
+box-shadow:
+0 0 40px rgba(0,212,170,.4);
+}
+@keyframes floatProfile{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+}
+.halo{
+
+position:absolute;
+
+border-radius:50%;
+
+border:1px solid rgba(255,255,255,.08);
+
+animation:spin 25s linear infinite;
+}
+.halo-1{
+width:330px;
+height:330px;
+}
+
+.halo-2{
+width:430px;
+height:430px;
+}
+@keyframes spin{
+
+from{
+
+transform:rotate(0deg);
+}
+
+to{
+
+transform:rotate(360deg);
+}
+
+}
+.radar-ring{
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:
+conic-gradient(
+
+transparent 0deg,
+
+rgba(0,212,170,.12) 30deg,
+
+transparent 60deg
+
+);
+
+animation:spin 10s linear infinite;
+
+opacity:.07;
+}
+.personality-chip{
+
+display:flex;
+align-items:center;
+
+padding:.5rem 1rem;
+
+background:rgba(255,255,255,.03);
+
+border:1px solid var(--border);
+
+backdrop-filter:blur(12px);
+
+border-radius:30px;
+
+font-family:'Space Mono',monospace;
+
+font-size:11px;
+
+color:var(--muted);
+
+white-space:nowrap;
+
+opacity:0;
+
+transform:translateY(10px);
+
+transition:
+opacity .8s ease,
+transform .8s ease,
+box-shadow .5s ease;
+}
+.personality-chip.visible{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+.ai-ring{
+
+position:absolute;
+
+width:430px;
+height:430px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(0,212,170,.15),
+transparent 70%
+);
+
+filter:blur(40px);
+
+animation:pulseRing 6s infinite;
+
+z-index:1;
+}
+@keyframes pulseRing{
+
+0%,100%{
+
+transform:scale(1);
+
+opacity:.7;
+}
+
+50%{
+
+transform:scale(1.1);
+
+opacity:1;
+}
+
+}
+[data-theme="light"] .ai-ring{
+
+background:
+radial-gradient(
+circle,
+rgba(0,120,212,.15),
+transparent 70%
+);
+}
+
+[data-theme="light"] .halo{
+
+border-color:rgba(0,0,0,.08);
+}
+[data-theme="light"] .radar-ring{
+
+background:
+
+conic-gradient(
+
+transparent 0deg,
+
+rgba(0,120,212,.12) 30deg,
+
+transparent 60deg
+
+);
+}
+.neural-constellation{
+position:absolute;
+width:850px;
+height:850px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+z-index:3;
+overflow: visible;
+}
+@media(max-width:768px){
+
+.neural-constellation{
+
+width:450px;
+height:450px;
+}
+
+.profile-image{
+
+width:210px;
+height:210px;
+}
+
+.halo-1{
+
+width:270px;
+height:270px;
+}
+
+.halo-2{
+
+width:340px;
+height:340px;
+}
+
+.radar-ring{
+
+width:380px;
+height:380px;
+}
+}
+@keyframes constellationRotate{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+@media(max-width:480px){
+
+.hero-right{
+
+min-height:400px;
+}
+
+.profile-image{
+
+width:180px;
+height:180px;
+}
+
+.neural-constellation{
+
+width:350px;
+height:350px;
+}
+
+.halo-1{
+
+width:240px;
+height:240px;
+}
+
+.halo-2{
+
+width:300px;
+height:300px;
+}
+}
+.trait{
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform-origin:0 0;
+}/* Dots hidden by default */
+.trait-node {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent), 0 0 18px var(--accent), 0 0 35px rgba(0,212,170,.5);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Dot only visible when chip is active */
+.trait.visible-node .trait-node {
+  opacity: 1;
+}
+/* ADD this new rule */
+.hero-right, .neural-constellation {
+  overflow: visible !important;
+}
+
+/* And clip only on body level for scroll, not visual */
+body {
+  overflow-x: clip; /* change from: overflow-x: hidden */
+}
+
+.personality-chip {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .8s ease, transform .8s ease, box-shadow .5s ease;
+  visibility: hidden;  /* ADD THIS — removes from hit/overlap detection */
+}
+
+/* When active, show BOTH the chip AND the node */
+.trait.visible-node .personality-chip {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.trait.visible-node .trait-node {
+  opacity: 1;
+}
+.constellation-lines{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+stroke:rgba(255,255,255,.08);
+
+stroke-width:1;
+
+fill:none;
+
+animation:linePulse 6s ease-in-out infinite;
+}
+@keyframes linePulse{
+
+0%,100%{
+
+opacity:.12;
+}
+
+50%{
+
+opacity:.35;
+}
+
+}
+@keyframes pulseNode{
+
+0%,100%{
+
+transform:scale(1);
+opacity:.8;
+}
+
+50%{
+transform:scale(2);
+opacity:1;
+
+box-shadow:
+0 0 10px var(--accent),
+0 0 30px var(--accent),
+0 0 70px var(--accent),
+0 0 100px rgba(0,212,170,.8);
+}
+
+}
+.trait1 .trait-node{
+animation:pulseNode 3.8s infinite;
+}
+
+.trait2 .trait-node{
+animation:pulseNode 7.1s infinite;
+}
+
+.trait3 .trait-node{
+animation:pulseNode 11.2s infinite;
+}
+
+.trait4 .trait-node{
+animation:pulseNode 5.7s infinite;
+}
+
+.trait5 .trait-node{
+animation:pulseNode 9.4s infinite;
+}
+
+.trait6 .trait-node{
+animation:pulseNode 13s infinite;
+}
+
+.trait7 .trait-node{
+animation:pulseNode 6.2s infinite;
+}
+
+.trait8 .trait-node{
+animation:pulseNode 8.8s infinite;
+}
+
+.trait9 .trait-node{
+animation:pulseNode 10.7s infinite;
+}
+
+.trait10 .trait-node{
+animation:pulseNode 14s infinite;
+}
+
+.trait11 .trait-node{
+animation:pulseNode 4.9s infinite;
+}
+
+.trait12 .trait-node{
+animation:pulseNode 12.3s infinite;
+}
+
+.trait13 .trait-node{
+animation:pulseNode 7.9s infinite;
+}
+
+.trait14 .trait-node{
+animation:pulseNode 15.4s infinite;
+}
+
+.center-core{
+
+width:20px;
+height:20px;
+
+background:var(--accent);
+
+border-radius:50%;
+
+filter:blur(15px);
+
+opacity:.6;
+
+animation:corePulse 5s infinite;
+}
+
+
+.personality-chip.active{
+
+border-color:
+rgba(0,212,170,.5);
+
+background:
+
+linear-gradient(
+90deg,
+rgba(0,212,170,.03),
+rgba(0,212,170,.12),
+rgba(0,212,170,.03)
+);
+
+box-shadow:
+
+0 0 40px rgba(0,212,170,.1);
+
+color:white;
+
+}
 
 
 /* HERO  Section */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:58px!important}
+.hero{
+min-height:100vh;
+padding-top:58px!important;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:80px;
+}
+@media (max-width:768px){
+
+.hero{
+
+flex-direction:column;
+
+justify-content:center;
+
+gap:40px;
+
+text-align:center;
+}
+
+.hero-left{
+
+width:100%;
+}
+
+.hero-right{
+
+width:100%;
+
+min-height:500px;
+}
+}
+.hero-left{
+flex:1;
+}
+
+.hero-right{
+flex:1;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+position:relative;
+min-height: 600px; overflow: visible;
+}
+
+.personality-item{
+
+position:absolute;
+
+top:50%;
+left:50%;
+}
+
   .hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:.35rem .9rem;border-radius:24px;margin-bottom:2rem;letter-spacing:.1em;opacity:0;animation:fadeUp .6s ease .2s forwards;background:rgba(0,212,170,.05)}
 .otw-dot{width:6px;height:6px;background:var(--accent);border-radius:24px;animation:blink 1.4s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
@@ -80,7 +606,7 @@ border:1px solid #4ade80;
 .hero-role span{color:var(--accent2);font-weight:600}
 
 /* TERMINAL */
-  .terminal{background:#0a0f14;border:1px solid var(--border);border-radius:24px;overflow:hidden;max-width:580px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .6s ease .65s forwards;box-shadow:0 0 40px var(--shadow)}
+  .terminal{background:#0a0f14;border:1px solid var(--border);border-radius:24px;overflow:hidden;max-width:650px;margin-bottom:2.5rem;opacity:0;animation:fadeUp .6s ease .65s forwards;box-shadow:0 0 40px var(--shadow)}
 [data-theme="light"] .terminal{background:#1a2332}
 .terminal-bar{background:#111820;padding:.6rem 1rem;display:flex;align-items:center;gap:.4rem;border-bottom:1px solid var(--border)}
 .t-dot{width:10px;height:10px;border-radius:24px}
@@ -144,7 +670,30 @@ height:360px;
 perspective:1000px;
 cursor:pointer;
 }
+.spotlight{
+    position:relative;
+    overflow:hidden;
+}
 
+.spotlight::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(0,212,170,.10),
+        transparent 40%
+    );
+
+    opacity:0;
+    transition:opacity .3s;
+}
+
+.spotlight:hover::before{
+    opacity:1;
+}
 .flip-inner{
 position:relative;
 width:100%;
@@ -248,7 +797,83 @@ margin:auto;
 overflow:hidden;
 transition:all .3s ease;
 }
+.center-core{
 
+position:absolute;
+
+width:25px;
+height:25px;
+
+background:var(--accent);
+
+border-radius:50%;
+
+filter:blur(15px);
+
+opacity:.7;
+
+animation:corePulse 5s ease-in-out infinite;
+}
+@keyframes corePulse{
+
+0%,100%{
+transform:scale(1);
+opacity:.5;
+}
+
+50%{
+transform:scale(1.5);
+opacity:1;
+}
+}
+.aurora{
+position:fixed;
+inset:0;
+z-index:-2;
+overflow:hidden;
+}
+
+.aurora::before,
+.aurora::after{
+
+content:'';
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+filter:blur(120px);
+
+animation:moveBlob 18s infinite alternate;
+}
+
+.aurora::before{
+background:rgba(0,212,170,.08);
+left:-200px;
+top:-200px;
+}
+
+.aurora::after{
+background:rgba(0,168,255,.08);
+right:-200px;
+bottom:-200px;
+animation-duration:25s;
+}
+
+@keyframes moveBlob{
+
+0%{
+transform:translate(0,0);
+}
+
+100%{
+transform:translate(200px,-100px);
+}
+
+}
 .system-card:hover{
 border-color:var(--accent);
 box-shadow:0 10px 35px rgba(0,212,170,.08);
@@ -355,6 +980,7 @@ font-weight:700;
 </div>
   <!-- HERO -->
   <section class="hero" id="home">
+  <div class="hero-left">
     <div class="hero-badge"><span class="otw-dot"></span> OPEN_TO_WORK = True</div>
     <h1 class="hero-name">
 Anish<br>
@@ -373,9 +999,117 @@ Anish<br>
       <a href="#contact" class="btn btn-outline">Hire Me</a>
       <a href="Anish_Kumar_Resume.pdf" download class="btn btn-outline">↓ Resume</a>
     </div>
+  </div>  
+  <div class="hero-right">
+
+    
+
+    <div class="radar-ring"></div>
+
+    <div class="halo halo-1"></div>
+
+    <div class="halo halo-2"></div>
+
+    <div class="neural-constellation">
+
+    <div class="trait trait1">
+    <div class="trait-node"></div>
+    <span class="personality-chip">⌘ Building Ideas</span>
+</div>
+
+<div class="trait trait2">
+    <div class="trait-node"></div>
+    <span class="personality-chip">◈ Reading Papers</span>
+</div>
+
+<div class="trait trait3">
+    <div class="trait-node"></div>
+    <span class="personality-chip">◉ Open Source</span>
+</div>
+
+<div class="trait trait4">
+    <div class="trait-node"></div>
+    <span class="personality-chip">☕ Coffee Powered</span>
+</div>
+
+<div class="trait trait5">
+    <div class="trait-node"></div>
+    <span class="personality-chip">⚡ Shipping Fast</span>
+</div>
+
+<div class="trait trait6">
+    <div class="trait-node"></div>
+    <span class="personality-chip">☾ Night Owl</span>
+</div>
+
+<div class="trait trait7">
+    <div class="trait-node"></div>
+    <span class="personality-chip">↗ Learning Daily</span>
+</div>
+
+<div class="trait trait8">
+    <div class="trait-node"></div>
+    <span class="personality-chip">⌬ Builder Mindset</span>
+</div>
+
+<div class="trait trait9">
+    <div class="trait-node"></div>
+    <span class="personality-chip">⟡ Systems Thinker</span>
+</div>
+
+<div class="trait trait10">
+    <div class="trait-node"></div>
+    <span class="personality-chip">◌ Always Curious</span>
+</div>
+
+<div class="trait trait11">
+    <div class="trait-node"></div>
+    <span class="personality-chip">⌁ Quietly Ambitious</span>
+</div>
+
+<div class="trait trait12">
+    <div class="trait-node"></div>
+    <span class="personality-chip">◎ AI Explorer</span>
+</div>
+
+<div class="trait trait13">
+    <div class="trait-node"></div>
+    <span class="personality-chip">◍ Future Focused</span>
+</div>
+
+<div class="trait trait14">
+    <div class="trait-node"></div>
+    <span class="personality-chip">∞ Never Finished</span>
+</div>
+
+    <svg class="constellation-lines">
+
+        <line x1="190" y1="140" x2="310" y2="100"/>
+
+        <line x1="310" y1="100" x2="420" y2="180"/>
+
+        <line x1="420" y1="180" x2="390" y2="330"/>
+
+        <line x1="390" y1="330" x2="220" y2="380"/>
+
+        <line x1="220" y1="380" x2="160" y2="260"/>
+
+    </svg>
+
+</div>
+
+    <div class="profile-wrapper">
+
+        <img src="profile.jpeg" alt="Anish Kumar — ML Engineer" class="profile-image" onerror="this.style.display='none'">
+
+    </div>
+    <div class="center-core"></div>
+
+</div>
+</div>
   </section>
   <div class="divider"></div>
-
+<div class="aurora"></div>
   <!-- ABOUT -->
   <section id="about">
     <p class="section-label">About</p>
@@ -1127,7 +1861,20 @@ setInterval(()=>{
   document.getElementById('ticker-text').textContent=tMsgs[tIdx];
   document.getElementById('ticker-epoch').textContent=`epoch ${tEp}/∞`;
 },450);
+// Target all your specific card classes directly
+const cardSelectors = '.system-card, .edu-card, .gh-card, .flip-front, .flip-back, .contact-box, .exp-item, .now-item, training-ticker, .build-log';
 
+document.querySelectorAll(cardSelectors).forEach(card => {
+    // Automatically add the relative/overflow behavior via JS class injection
+    card.classList.add('spotlight');
+
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+});
 /* GITHUB LIVE STATS */
 (async function(){
   const USERNAME="anishk-neuroforge";
@@ -1208,6 +1955,72 @@ if(window.innerWidth<768){
     });
   });
 }
+
+</script>
+<script>
+const traits = document.querySelectorAll(".trait");
+
+/* -- INITIALIZE with larger, better-spaced radii -- */
+const totalTraits = traits.length;
+traits.forEach((trait, i) => {
+  trait.dataset.angle = (360 / totalTraits) * i;
+
+  const minR = 230;
+  const maxR = Math.max(minR + 20, Math.min(window.innerWidth * 0.28, 300));
+  trait.dataset.radius = minR + Math.random() * (maxR - minR);
+});
+
+/* -- Show only 5 chips at a time, evenly spaced -- */
+let visibleIndices = [];
+
+function updateVisibleTraits() {
+  traits.forEach(t => t.classList.remove("visible-node"));
+
+  const step = Math.floor(totalTraits / 5);
+  const offset = Math.floor(Math.random() * step);
+  visibleIndices = [];
+  for (let i = 0; i < 5; i++) {
+    visibleIndices.push((offset + i * step) % totalTraits);
+  }
+
+  visibleIndices.forEach(idx => {
+    traits[idx].classList.add("visible-node");
+  });
+}
+
+updateVisibleTraits();
+setInterval(updateVisibleTraits, 3000);
+
+/* -- Glow active chip -- */
+setInterval(() => {
+  document.querySelectorAll(".personality-chip").forEach(c => c.classList.remove("active"));
+  if (visibleIndices.length === 0) return;
+  const randomIdx = visibleIndices[Math.floor(Math.random() * visibleIndices.length)];
+  traits[randomIdx].querySelector(".personality-chip").classList.add("active");
+}, 2500);
+
+/* -- Orbit animation -- */
+function animateOrbit() {
+  traits.forEach((trait) => {
+    let angle = parseFloat(trait.dataset.angle);
+    angle += 0.003;
+    trait.dataset.angle = angle;
+
+    const radius = parseFloat(trait.dataset.radius);
+    const wobbleX = Math.sin(Date.now() / 5000 + angle) * 6;
+    const wobbleY = Math.cos(Date.now() / 7000 + angle) * 5;
+
+    trait.style.transform = `
+      rotate(${angle}deg)
+      translate(${radius}px)
+      rotate(${-angle}deg)
+      translate(${wobbleX}px, ${wobbleY}px)
+    `;
+  });
+  requestAnimationFrame(animateOrbit);
+}
+
+animateOrbit();
 </script>
 </body>
 </html>
