@@ -1,0 +1,8 @@
+{
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist/client",
+  "installCommand": "bun install",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
