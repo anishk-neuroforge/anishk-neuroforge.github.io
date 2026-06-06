@@ -1,1 +1,0 @@
-# anishk-neuroforge.github.io

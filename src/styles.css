@@ -1,0 +1,122 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-electric: var(--electric);
+  --color-electric-deep: var(--electric-deep);
+  --color-cyan-glow: var(--cyan-glow);
+  --color-lemon: var(--lemon);
+  --color-ink: var(--ink);
+  --color-bone: var(--bone);
+
+  --font-display: "Archivo Black", "Arial Black", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 1.25rem;
+  --bone: oklch(0.965 0.005 90);
+  --ink: oklch(0.13 0.01 260);
+  --electric: oklch(0.62 0.24 255);
+  --electric-deep: oklch(0.42 0.25 263);
+  --cyan-glow: oklch(0.85 0.16 220);
+  --lemon: oklch(0.95 0.21 105);
+
+  --background: var(--bone);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--bone);
+  --secondary: oklch(0.92 0.005 90);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.93 0.005 90);
+  --muted-foreground: oklch(0.45 0.01 260);
+  --accent: var(--lemon);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.88 0.005 90);
+  --input: oklch(0.88 0.005 90);
+  --ring: var(--electric);
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.35 0.25 263) 0%, oklch(0.55 0.27 255) 40%, oklch(0.78 0.18 220) 100%);
+  --gradient-card-dark: linear-gradient(160deg, oklch(0.18 0.02 260), oklch(0.1 0.01 260));
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; line-height: 0.9; }
+}
+
+@utility text-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+@utility bg-hero-gradient {
+  background-image: var(--gradient-hero);
+}
+
+@utility bg-card-dark {
+  background-image: var(--gradient-card-dark);
+}
+
+@utility marquee-track {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+  animation-play-state: var(--marquee-play, running);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@utility pulse-dot {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
