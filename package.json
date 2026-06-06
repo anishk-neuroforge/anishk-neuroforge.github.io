@@ -4,12 +4,12 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-  "dev": "vite dev",
-  "build": "vite build",
-  "preview": "vite preview",
-  "lint": "eslint .",
-  "format": "prettier --write ."
-},
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
   "dependencies": {
     "@lovable.dev/vite-tanstack-config": "^2.1.1",
     "@hookform/resolvers": "^5.2.2",
@@ -83,6 +83,6 @@
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "5"
+    "vite": "6"
   }
 }
